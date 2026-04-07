@@ -1,27 +1,43 @@
 ![ES-4](https://github.com/user-attachments/assets/a2e54098-8641-46ca-8c71-399f54624d9f)
 
-## 🥁 CarnaCode 2026 - Desafio 09 - Decorator
+## 🥁 CarnaCode 2026 - Challenge 09 - Decorator
 
-Oi, eu sou o [seu nome aqui] e este é o espaço onde compartilho minha jornada de aprendizado durante o desafio **CarnaCode 2026**, realizado pelo [balta.io](https://balta.io). 👻
+Hi, I'm Felipe Parizzi Galli, and this is where I share my learning journey during the **CarnaCode 2026** challenge, hosted by [balta.io](https://balta.io). 👻
 
-Aqui você vai encontrar projetos, exercícios e códigos que estou desenvolvendo durante o desafio. O objetivo é colocar a mão na massa, testar ideias e registrar minha evolução no mundo da tecnologia.
+Here you will find projects, exercises, and code I am building during the challenge. The goal is to get hands-on, test ideas, and document my growth in technology.
 
-### Sobre este desafio
-No desafio **Decorator** eu tive que resolver um problema real implementando o **Design Pattern** em questão.
-Neste processo eu aprendi:
-* ✅ Boas Práticas de Software
-* ✅ Código Limpo
-* ✅ SOLID
-* ✅ Design Patterns (Padrões de Projeto)
+### About this challenge
 
-## Problema
-Uma cafeteria oferece bebidas base (Café, Cappuccino, Chá) e múltiplos complementos (Leite, Chocolate, Chantilly, Caramelo). O código atual cria uma classe para cada combinação possível, resultando em explosão de classes e código duplicado.
+In the **Decorator** challenge, I had to solve a real-world problem by implementing the corresponding **Design Pattern**.  
+Throughout this process, I learned:
 
-## Sobre o CarnaCode 2026
-O desafio **CarnaCode 2026** consiste em implementar todos os 23 padrões de projeto (Design Patterns) em cenários reais. Durante os 23 desafios desta jornada, os participantes são submetidos ao aprendizado e prática na idetinficação de códigos não escaláveis e na solução de problemas utilizando padrões de mercado.
+- ✅ Software best practices
+- ✅ Clean code
+- ✅ SOLID
+- ✅ Design Patterns
 
-### eBook - Fundamentos dos Design Patterns
-Minha principal fonte de conhecimento durante o desafio foi o eBook gratuito [Fundamentos dos Design Patterns](https://lp.balta.io/ebook-fundamentos-design-patterns).
+## Problem
 
-### Veja meu progresso no desafio
-[Incluir link para o repositório central]
+A coffee shop offers base drinks (Coffee, Cappuccino, Tea) and multiple add-ons (Milk, Chocolate, Chantilly, Caramel). The original code created one class for each possible combination, causing class explosion and duplicated code.
+
+## About CarnaCode 2026
+
+The **CarnaCode 2026** challenge consists of implementing all 23 design patterns in real-world scenarios. Across the 23 challenges in this journey, participants practice identifying non-scalable code and solving problems with industry-standard patterns.
+
+### eBook - Design Pattern Fundamentals
+
+My main learning resource during the challenge was the free eBook [Fundamentos dos Design Patterns](https://lp.balta.io/ebook-fundamentos-design-patterns).
+
+## How the Decorator Pattern Was Implemented
+
+The implementation uses a common contract (`ICoffee`) with `GetCost()` and `GetDescription()`.
+
+- Base beverages implement `ICoffee` directly:
+`Espresso` and `Cappuccino`.
+- A base decorator class (`CoffeeDecorator`) also implements `ICoffee` and wraps another `ICoffee` instance.
+- Concrete decorators extend `CoffeeDecorator` and add behavior:
+`MilkDecorator`, `ChocolateDecorator`, and `ChantillyDecorator`.
+- Each concrete decorator adds its own value to the base price and appends its name to the description, allowing dynamic composition at runtime.
+
+Example composition:
+`new ChantillyDecorator(new ChocolateDecorator(new MilkDecorator(new Cappuccino())))`
